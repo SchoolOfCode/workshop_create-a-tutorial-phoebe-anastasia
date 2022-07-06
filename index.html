@@ -127,6 +127,32 @@ In this example, the title of list item is set as an empty string. If the list i
     }
     export default ListItem
 </figure>
+<h3>Context</h3>
+<h2>What Context is in principle.</h2>
+</br>
+<p>In React there's a concept knows as Context which is an alternative to passing props. It provides a method for sharing data globally across our component tree. </p>
+</br> 
+<h3>Why you'd want to use Context.</h3>
+</br>
+<p>
+The main problem using context solves is allowing our components to access the global data and rerender this when it chnages in our application.
+Typically React context is used when the data isn't required to be updated often; 
+<ul>
+    <li>Theme mode (dark or light mode)</li>
+    <li>User authentication</li>
+    <li>User language</li>
+</ul>
+React context effectively solves the problem of prop drilling. 
+This is a process of passing data ineffeciently as it forces you to pass through unneccesary nested children components in order to deliver the data to its desired destination. 
+This will cause issues with component reusability and app perfomance.</p>
+<br>
+<h3>How you'd want to use Context.</h3>
+</br>
+<p>useContext is a Hook. Just like useState and useReducer, you can only call a Hook at the top level of a React component.
+
+    Here's n prop drilling 
+</p>
+</br>
 </body>
 </html>
 
