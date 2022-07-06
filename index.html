@@ -31,8 +31,8 @@
             const title = props.title;
             const content = props.content;
               return (
-                <p>{title}.</p>
-                <p>My favorite item is {content}.</p>
+                &lt;p&gt;{title}. &lt;/p&gt;
+                &lt;p&gt;My favorite item is {content}. &lt;/p&gt;
               );
           } 
           export default ListItem
@@ -47,10 +47,10 @@
         function ListItem({title, content}) {
   
             return (
-              <div>
-                <p>{title}.</p>
-                <p>My favorite item is {content}.</p>
-              </div>
+                &lt;div&gt;
+                &lt;p&gt;{title}. &lt;/p&gt;
+                &lt;p&gt;My favorite item is {content}. &lt;/p&gt;
+                &lt;/div&gt;
             );
         }
         
@@ -65,10 +65,10 @@
         function ListItem({title, content}) {
 
             return (
-              <div>
-                <p>{title}.</p>
-                <p>My favorite item is {content}.</p>
-              </div>
+                &lt;div&gt;
+                &lt;p&gt;{title}.&lt;/p&gt;
+                &lt;p&gt;My favorite item is {content}.&lt;/p&gt;
+                &lt;/div&gt;
             );
         
           }
@@ -123,11 +123,11 @@ In this example, the title of list item is set as an empty string. If the list i
         };
     
         return (
-          <div>
-            <p>{title}.</p>
-            <p>My favorite item is {content}.</p>
-            <button onClick={clickHandler}>Change Title</button>
-          </div>
+            &lt;div>
+            &lt;p>{title}. &lt;/p&gt;
+            &lt;p>My favorite item is {content}. &lt;/p&gt;
+            &lt;button onClick={clickHandler}>Change Title &lt;/button&gt;
+            &lt;/div&gt;
         );
     }
     export default ListItem
@@ -161,18 +161,18 @@ This will cause issues with component reusability and app perfomance.</p>
     <code>
     export default function App({ theme }) {
         return (
-            <Header theme={theme} />
-            <Main theme={theme} />
-            <List theme={theme} />
-            <Footer theme={theme} />
+            &lt;Header theme={theme} /&gt;
+            &lt;Main theme={theme} /&gt;
+            &lt;List theme={theme} /&gt;
+            &lt;Footer theme={theme} /&gt;
         );
       }
       function Header({ theme }) {
         return (
         
-            <User theme={theme} />
-            <Login theme={theme} />
-            <Menu theme={theme} />
+            &lt;User theme={theme} /&gt;
+            &lt;Login theme={theme} /&gt;
+            &lt;Menu theme={theme} /&gt;
           
         );
       }
@@ -189,15 +189,15 @@ export const ThemeContext = React.createContext();
 
 export default function App() {
   return (
-    <ThemeContext.Provider>
-      <Theme />
-    </ThemeContext.Provider>
+    &lt;ThemeContext.Provider /&gt;
+    &lt;Theme /&gt;
+    &lt;/ ThemeContext.Provider &gt;
   )
 }
 
 function Theme() {
   return (
-      {color => <h1>{color}</h1>} 
+      {color => &lt;h1&gt;{color}&lt;/h1&gt;} 
   )
 }
 </code>
