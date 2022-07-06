@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class=" page-container">
     <h1>Phoebe & Anastasia's React Guide</h1>
     <h3>Props</h3>
     <h2>What props are in principle?</h2>
@@ -25,47 +26,47 @@
     <br>
     <p>You need to pass props as an argument to the function for your custom component similar to how you would pass an argument in a vanilla JavaScript function; </p>
     <pre>
+        <code>
         function ListItem (props) {
             const title = props.title;
             const content = props.content;
               return (
-                  <code>
-                    <div>
-                        <h1>{title}.</h1>
-                        <p>My favorite item is {content}.</p>
-                      </div>
-                  </code>
-                
+                <p>{title}.</p>
+                <p>My favorite item is {content}.</p>
               );
           } 
           export default ListItem
+    </code>
     </pre>
     <br>
     <p><b>Using props with destructuring</b></p>
     <br>
     <p>Similarly, to the previous section the code is exactly the same as without destructuring props. The only difference is where you're declaring props they're passed as a variable to the function instead of as an argument.</p>
-    <figure>
+    <pre>
+        <code>
         function ListItem({title, content}) {
   
             return (
               <div>
-                <h1>{title}.</h1>
+                <p>{title}.</p>
                 <p>My favorite item is {content}.</p>
               </div>
             );
         }
         
         export default ListItem
-    </figure>
+    </code>
+    </pre>
     <p><b>Setting default values for props</b></p>
     <br>
     <p>You can also pass funtions and data from objects in your props. You can pass in default value to your props if you'd rather them be empty when created;</p>
-    <figure>
+    <pre>
+        <code>
         function ListItem({title, content}) {
 
             return (
               <div>
-                <h1>{title}.</h1>
+                <p>{title}.</p>
                 <p>My favorite item is {content}.</p>
               </div>
             );
@@ -77,8 +78,8 @@
             content: "coffee machine"
           }
         export default ListItem
-        
-    </figure>
+      </code>  
+    </pre>
     <br>
     </p>
     <h3>State</h3>
@@ -98,14 +99,16 @@ when changes to these values occur, the Component function is called again.</p>
  <br/>
  <p><b>Convention of useState</b></p>
  <br/>
-<figure>
+<pre>
+<code>
 const [title, setTitle] = useState('');
-</figure>
+</code></pre>
 <p>Here we've called useState and in doing so we are telling React to manage the title of listItem. As a standard practice you declare this pair as const [something, setSomething]. The first time it's called it takes an argument as the initial value of it's state.
 In this example, the title of list item is set as an empty string. If the list item is assigned a new title the componnent is then re-executed as a state change has occurred. This updated List item is extracted by React to give the most up-to-date state snapshot.
 </p>
 <br>
-<figure>
+<pre>
+    <code>
     import React, { useState } from 'react';
 
     function ListItem({title, content}) {
@@ -121,14 +124,15 @@ In this example, the title of list item is set as an empty string. If the list i
     
         return (
           <div>
-            <h1>{title}.</h1>
+            <p>{title}.</p>
             <p>My favorite item is {content}.</p>
             <button onClick={clickHandler}>Change Title</button>
           </div>
         );
     }
     export default ListItem
-</figure>
+</code>
+</pre>
 <h3>Context</h3>
 <h2>What Context is in principle.</h2>
 </br>
@@ -153,7 +157,8 @@ This will cause issues with component reusability and app perfomance.</p>
 <p>useContext is a Hook. Just like useState and useReducer, you can only call a Hook at the top level of a React component.
 
     Here's an example of prop drilling as you can see in order to pass {theme} to the children of our App it requires you to pass {theme} through the Header component unnecessarily;
-<figure>
+<pre>
+    <code>
     export default function App({ theme }) {
         return (
             <Header theme={theme} />
@@ -171,11 +176,13 @@ This will cause issues with component reusability and app perfomance.</p>
           
         );
       }
-</figure>
+</code>
+</pre>
 <p>
     It would be more beneficial to pass {theme} to the children of Header directly as you can see React context provides an easy way of changing the color theme at the top level of your App;
 </p>
-<figure>
+<pre>
+    <code>
     import React from 'react';
 
 export const ThemeContext = React.createContext();
@@ -193,11 +200,11 @@ function Theme() {
       {color => <h1>{color}</h1>} 
   )
 }
-
-</figure>
+</code>
+</pre>
 </p>
 </br>
-</body>
+</div></body>
 </html>
 
 
