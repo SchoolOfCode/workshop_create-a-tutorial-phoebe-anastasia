@@ -24,20 +24,22 @@
     <p><b>Using props without destructuring</b></p>
     <br>
     <p>You need to pass props as an argument to the function for your custom component similar to how you would pass an argument in a vanilla JavaScript function; </p>
-    <figure>
+    <pre>
         function ListItem (props) {
             const title = props.title;
             const content = props.content;
               return (
-                <div>
-                  <h1>{title}.</h1>
-                  <p>My favorite item is {content}.</p>
-                </div>
+                  <code>
+                    <div>
+                        <h1>{title}.</h1>
+                        <p>My favorite item is {content}.</p>
+                      </div>
+                  </code>
+                
               );
-          }
-          
+          } 
           export default ListItem
-    </figure>
+    </pre>
     <br>
     <p><b>Using props with destructuring</b></p>
     <br>
@@ -150,12 +152,53 @@ This will cause issues with component reusability and app perfomance.</p>
 </br>
 <p>useContext is a Hook. Just like useState and useReducer, you can only call a Hook at the top level of a React component.
 
-    Here's n prop drilling 
+    Here's an example of prop drilling as you can see in order to pass {theme} to the children of our App it requires you to pass {theme} through the Header component unnecessarily;
+<figure>
+    export default function App({ theme }) {
+        return (
+            <Header theme={theme} />
+            <Main theme={theme} />
+            <List theme={theme} />
+            <Footer theme={theme} />
+        );
+      }
+      function Header({ theme }) {
+        return (
+        
+            <User theme={theme} />
+            <Login theme={theme} />
+            <Menu theme={theme} />
+          
+        );
+      }
+</figure>
+<p>
+    It would be more beneficial to pass {theme} to the children of Header directly as you can see React context provides an easy way of changing the color theme at the top level of your App;
+</p>
+<figure>
+    import React from 'react';
+
+export const ThemeContext = React.createContext();
+
+export default function App() {
+  return (
+    <ThemeContext.Provider>
+      <Theme />
+    </ThemeContext.Provider>
+  )
+}
+
+function Theme() {
+  return (
+      {color => <h1>{color}</h1>} 
+  )
+}
+
+</figure>
 </p>
 </br>
 </body>
 </html>
-
 
 
 
