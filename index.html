@@ -11,10 +11,75 @@
     <h1>Phoebe & Anastasia's React Guide</h1>
     <h3>Props</h3>
     <h2>What props are in principle?</h2>
+    <br>
     <p>React has a concept known as props, props is just a shorter way of saying properties. Props allow us to make our components reusable by passing data from one component to
     another with the use of parameters. Props are passed to a JSX tag.</p>
+    <br>
     <h2>Why you'd want to use props</h2>
-    <p>By allowing us to pass data to the custom component by adding a property we are able to access all of these
-        They are useful when you want the flow of data in your app to be dynamic.</p>
+    <br>
+    <p> We are able to access all of the properties by passing the data dynamically in App.js to the custom component (from a parent component to a child component(s)).</p>
+    <br>
+    <h2>How you'd want to use them</h2>
+    <br>
+    <p><b>Using props without destructuring</b></p>
+    <br>
+    <p>You need to pass props as an argument to the function for your custom component similar to how you would pass an argument in a vanilla JavaScript function; </p>
+    <figure>
+        function ListItem (props) {
+            const title = props.title;
+            const content = props.content;
+              return (
+                <div>
+                  <h1>My name is {title}.</h1>
+                  <p>My favorite item is {content}.</p>
+                </div>
+              );
+          }
+          
+          export default ListItem
+    </figure>
+    <br>
+    <p><b>Using props with destructuring</b></p>
+    <br>
+    <p>Similarly, to the previous section the code is exactly the same as without destructuring props. The only difference is where you're declaring props they're passed as a variable to the function instead of as an argument.</p>
+    <figure>
+        function ListItem({title, content}) {
+  
+            return (
+              <div>
+                <h1>My name is {title}.</h1>
+                <p>My favorite item is {content}.</p>
+              </div>
+            );
+        }
+        
+        export default ListItem
+    </figure>
+    <p><b>Setting default values for props</b></p>
+    <br>
+    <p>You can also pass funtions and data from objects in your props. You can pass in default value to your props if you'd rather them be empty when created;</p>
+    <figure>
+        function ListItem({title, content}) {
+
+            return (
+              <div>
+                <h1>My name is {title}.</h1>
+                <p>My favorite item is {content}.</p>
+              </div>
+            );
+        
+          }
+          
+          ListItem.defaultProps = {
+            title: "Coffee",
+            content: "coffee machine"
+          }
+        export default ListItem
+        
+    </figure>
+    <br>
+    </p>
 </body>
 </html>
+
+
