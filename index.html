@@ -30,7 +30,7 @@
             const content = props.content;
               return (
                 <div>
-                  <h1>My name is {title}.</h1>
+                  <h1>{title}.</h1>
                   <p>My favorite item is {content}.</p>
                 </div>
               );
@@ -47,7 +47,7 @@
   
             return (
               <div>
-                <h1>My name is {title}.</h1>
+                <h1>{title}.</h1>
                 <p>My favorite item is {content}.</p>
               </div>
             );
@@ -63,7 +63,7 @@
 
             return (
               <div>
-                <h1>My name is {title}.</h1>
+                <h1>{title}.</h1>
                 <p>My favorite item is {content}.</p>
               </div>
             );
@@ -94,12 +94,42 @@ when changes to these values occur, the Component function is called again.</p>
 </br>
  <h2>How you'd want to use state.</h2>
  <br/>
- <p><b>Basic Structure of State</b></p>
+ <p><b>Convention of useState</b></p>
  <br/>
 <figure>
-const [listItem, setListItem] = useState('');
+const [title, setTitle] = useState('');
+</figure>
+<p>Here we've called useState and in doing so we are telling React to manage the title of listItem. As a standard practice you declare this pair as const [something, setSomething]. The first time it's called it takes an argument as the initial value of it's state.
+In this example, the title of list item is set as an empty string. If the list item is assigned a new title the componnent is then re-executed as a state change has occurred. This updated List item is extracted by React to give the most up-to-date state snapshot.
+</p>
+<br>
+<figure>
+    import React, { useState } from 'react';
+
+    function ListItem({title, content}) {
+
+        // function clickHandler()
+    
+        const [title, setTitle] = useState(props.title);
+      
+        const clickHandler = () => {
+          setTitle('Updated!');
+          console.log(title);
+        };
+    
+        return (
+          <div>
+            <h1>{title}.</h1>
+            <p>My favorite item is {content}.</p>
+            <button onClick={clickHandler}>Change Title</button>
+          </div>
+        );
+    }
+    export default ListItem
 </figure>
 </body>
 </html>
+
+
 
 
